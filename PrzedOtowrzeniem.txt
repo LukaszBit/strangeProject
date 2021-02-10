@@ -1,0 +1,17 @@
+Należy utworzyć nową bazę danych oraz wykonać poniższe komendy:
+
+CREATE TABLE IF NOT EXISTS `users` ( `id` int(11) NOT NULL AUTO_INCREMENT, `userName` varchar(100) NOT NULL,
+ `fullName` varchar(255) NOT NULL, `email` varchar(100) NOT NULL, `passwd` varchar(255) NOT NULL,
+ `status` int(1) NOT NULL, `date` datetime NOT NULL, PRIMARY KEY (`id`),
+ UNIQUE KEY `userName` (`userName`,`email`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `logged_in_users` (`sessionId` varchar(100) NOT NULL,
+`userId` int(11) NOT NULL,`lastUpdate` datetime NOT NULL,PRIMARY KEY (`sessionId`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `produkty` (`idProd` int(11) NOT NULL AUTO_INCREMENT,
+`produkt` varchar(255) NOT NULL,`cena` int(11),`opis` varchar(255) NOT NULL,PRIMARY KEY (`idProd`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+W plikach zamow.php, koszyk.php, rejestracja.php, logowanie.php oraz profil.php zmienić 127.0.0.1:3307
+$bd = new Baza("127.0.0.1:3307", "root", "", "users"); na własnie dane.
+
+Do tabeli produkty należy dodać conajmniej jeden rekord.
